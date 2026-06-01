@@ -68,8 +68,8 @@ export const infoPageConfig: InfoPageConfig = {
     },
     {
       label: "Instagram",
-      value: "@harmonyharrington",
-      href: "https://instagram.com/harmonyharrington",
+      value: "@photographer_hash",
+      href: "https://instagram.com/photographer_hash",
     },
     {
       label: "Teléfono",
@@ -286,10 +286,10 @@ export const galleryConfig: GalleryConfig = {
 
 export const seoConfig = {
   siteName: "Harmony Harrington Photography",
-  siteUrl: "https://harmonyharrington.com",
+  siteUrl: "https://harmony-harrington.vercel.app/",
   author: "Harmony Harrington",
   description: "Fotógrafa profesional especializada en fotografía de bodas, retratos y arte en Madrid, España.",
   keywords: "fotografía, bodas, retratos, fotógrafa profesional, Madrid, España",
   locale: "es_ES",
-  twitter: "@harmonyharrington",
+  twitter: "@photographer_hash",
 };

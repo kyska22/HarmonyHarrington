@@ -52,7 +52,7 @@ export default function Info() {
     title: "Sobre la Fotógrafa - Harmony Harrington",
     description: "Conoce a Harmony Harrington, fotógrafa profesional especializada en bodas, retratos y fotografía artística. Descubre mis paquetes de boda y contacta conmigo para tu evento especial.",
     keywords: "fotografía de bodas, retratos profesionales, fotógrafa Madrid, paquetes de boda",
-    canonicalUrl: "https://harmonyharrington.com/info",
+    canonicalUrl: "https://harmony-harrington.vercel.app/",
     ogImage: "/images/Harmony.webp",
   });
 
@@ -518,7 +518,7 @@ export default function Info() {
             href={getFooterHref(cfg.contactEntries.find((e) => e.label === "Email") ?? { label: "Email", value: "", href: "" })}
             style={{ color: "#000", textDecoration: "none" }}
           >
-            email: {cfg.contactEntries.find((e) => e.label === "Email")?.value ?? ""}
+           {cfg.contactEntries.find((e) => e.label === "Email")?.value ?? ""}
           </a>
         </div>
         <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "24px", fontSize: "15px", color: "#000" }}>
