@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import type { FormEvent } from "react";
 import { infoPageConfig, formspreeConfig } from "@/config";
 import Navbar from "@/components/Navbar";
+import { useSeo } from "@/hooks/useSeo";
+import { useJsonLd, localBusinessSchema } from "@/hooks/useJsonLd";
 
 const servicePackages = [
   {
@@ -46,6 +48,16 @@ const servicePackages = [
 export default function Info() {
   const cfg = infoPageConfig;
 
+  useSeo({
+    title: "Sobre la Fotógrafa - Harmony Harrington",
+    description: "Conoce a Harmony Harrington, fotógrafa profesional especializada en bodas, retratos y fotografía artística. Descubre mis paquetes de boda y contacta conmigo para tu evento especial.",
+    keywords: "fotografía de bodas, retratos profesionales, fotógrafa Madrid, paquetes de boda",
+    canonicalUrl: "https://harmonyharrington.com/info",
+    ogImage: "/images/Harmony.webp",
+  });
+
+  useJsonLd(localBusinessSchema);
+
   if (
     !cfg.title &&
     cfg.paragraphs.length === 0 &&
@@ -55,10 +67,8 @@ export default function Info() {
   }
 
   const [formError, setFormError] = useState<string | null>(null);
-  const redirectUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}${formspreeConfig.redirectPath}`
-      : formspreeConfig.redirectPath;
+  const [formSuccess, setFormSuccess] = useState<boolean>(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const containsUnsafeText = (value: string) => {
     const normalized = value.trim();
@@ -66,7 +76,8 @@ export default function Info() {
     return xssPattern.test(normalized);
   };
 
-  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
     const name = String(formData.get("name") ?? "").trim();
@@ -74,18 +85,39 @@ export default function Info() {
     const message = String(formData.get("message") ?? "").trim();
 
     if (!name || !message) {
-      e.preventDefault();
       setFormError("Por favor completa tu nombre y tu mensaje antes de enviar.");
+      setFormSuccess(false);
       return;
     }
 
     if (containsUnsafeText(name) || containsUnsafeText(phone) || containsUnsafeText(message)) {
-      e.preventDefault();
       setFormError("El formulario no admite etiquetas, scripts ni contenido malicioso.");
+      setFormSuccess(false);
       return;
     }
 
-    setFormError(null);
+    try {
+      const response = await fetch(formspreeConfig.actionUrl, {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Accept": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setFormSuccess(true);
+        setFormError(null);
+        form.reset();
+        setTimeout(() => setFormSuccess(false), 4000);
+      } else {
+        setFormError("Error al enviar el mensaje. Por favor intenta nuevamente.");
+        setFormSuccess(false);
+      }
+    } catch (err) {
+      setFormError("Error de conexión. Por favor intenta nuevamente.");
+      setFormSuccess(false);
+    }
   };
 
   return (
@@ -357,12 +389,10 @@ export default function Info() {
             </div>
 
             <form
-              action={formspreeConfig.actionUrl}
-              method="POST"
+              ref={formRef}
               onSubmit={handleFormSubmit}
               style={{ display: "grid", gap: "18px" }}
             >
-              <input type="hidden" name="_next" value={redirectUrl} />
               <input
                 type="hidden"
                 name="_subject"
@@ -432,6 +462,22 @@ export default function Info() {
                   }}
                 >
                   {formError}
+                </div>
+              ) : null}
+
+              {formSuccess ? (
+                <div
+                  style={{
+                    color: "#06a94d",
+                    fontSize: "14px",
+                    lineHeight: 1.5,
+                    marginTop: "6px",
+                    padding: "10px 12px",
+                    backgroundColor: "rgba(6, 169, 77, 0.08)",
+                    borderRadius: "6px",
+                  }}
+                >
+                  ✓ Mensaje enviado con éxito. Pronto me pondré en contacto contigo.
                 </div>
               ) : null}
 

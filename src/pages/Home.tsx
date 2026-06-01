@@ -7,8 +7,20 @@ import {
 } from "@/config";
 import ImageDetailOverlay from "@/components/ImageDetailOverlay";
 import Navbar from "@/components/Navbar";
+import { useSeo } from "@/hooks/useSeo";
+import { useJsonLd, harmonyPersonSchema } from "@/hooks/useJsonLd";
 
 export default function Home() {
+  useSeo({
+    title: `${siteConfig.brandName} - Galería de Fotografía Artística`,
+    description: "Explora la galería de Harmony Harrington. Fotografía artística, bodas, retratos y más. Cada imagen cuenta una historia única.",
+    keywords: "fotografía, galería, arte, bodas, retratos, Madrid",
+    canonicalUrl: "https://harmonyharrington.com",
+    ogImage: "/images/Harmony.webp",
+  });
+
+  useJsonLd(harmonyPersonSchema);
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const vortexRef = useRef<VortexGallery | null>(null);
   const lenisRef = useRef<Lenis | null>(null);

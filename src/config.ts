@@ -43,8 +43,8 @@ export interface GalleryConfig {
 
 export const siteConfig: SiteConfig = {
   language: "es",
-  brandName: "Harmony Harrington Photography",
-  copyright: "© 2025 Harmony Harrington Photography",
+  brandName: "Harmony Harrington",
+  copyright: "© 2026 Harmony Harrington. Todos los derechos reservados.",
 };
 
 export const navigationConfig: NavigationConfig = {
@@ -73,8 +73,8 @@ export const infoPageConfig: InfoPageConfig = {
     },
     {
       label: "Teléfono",
-      value: "+34 701 97323",
-      href: "tel:+3470197323",
+      value: "+34 641 15 5018",
+      href: "tel:+34641155018",
     },
     {
       label: "Estudio",
@@ -95,7 +95,7 @@ export const overlayConfig: OverlayConfig = {
 };
 
 export const formspreeConfig = {
-  actionUrl: "https://formspree.io/f/your-form-id",
+  actionUrl: "https://formspree.io/f/xqejreqp",
   redirectPath: "/info#contact",
 };
 
@@ -282,4 +282,14 @@ export const galleryConfig: GalleryConfig = {
       description: "Un tren rojo cruza el paisaje alpino nevado, creando un contraste perfecto.",
     },
   ],
+};
+
+export const seoConfig = {
+  siteName: "Harmony Harrington Photography",
+  siteUrl: "https://harmonyharrington.com",
+  author: "Harmony Harrington",
+  description: "Fotógrafa profesional especializada en fotografía de bodas, retratos y arte en Madrid, España.",
+  keywords: "fotografía, bodas, retratos, fotógrafa profesional, Madrid, España",
+  locale: "es_ES",
+  twitter: "@harmonyharrington",
 };
