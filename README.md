@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Vortex Portfolio Template
 
 A single-page photography / portfolio site built around a swirling cylindrical vortex of images rendered on WebGL. Clicking the central image — or any image in the background — zooms it up into a fullscreen detail overlay with a per-image caption. Includes a second route (`/info`) with a bio + contact layout.
@@ -172,3 +173,7 @@ Output goes to `dist/`.
 - Don't modify component files unless fixing a bug — all content lives in `src/config.ts`
 - If `galleryConfig.images` is empty, `Home` renders `null`; same for `Info` when its fields are all empty
 - The vortex's WebGL shader math is fragile; avoid tweaking `src/lib/VortexGallery.ts` unless you know what you're changing
+=======
+# HarmonyHarrington
+Repositorio da fotografa profesional Harmony Harrington
+>>>>>>> f98b7356b3a8ddcaa46c96581b4143ca8c93253b
