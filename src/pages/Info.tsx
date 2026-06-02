@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import { useSeo } from "@/hooks/useSeo";
 import { useJsonLd, localBusinessSchema } from "@/hooks/useJsonLd";
 
-const servicePackages = [
+/* const servicePackages = [
   {
     title: "Boda Bronce",
     duration: "2 horas",
@@ -43,7 +43,7 @@ const servicePackages = [
     ],
     price: "400 €",
   },
-];
+]; */
 
 export default function Info() {
   const cfg = infoPageConfig;
@@ -123,20 +123,69 @@ export default function Info() {
   return (
     <div
       style={{
-        position: "relative",
+        display: "flex",
+        flexDirection: "column",
         minHeight: "100vh",
         width: "100vw",
         background: "#ffffff",
         color: "#000000",
         overflowX: "hidden",
-        overflowY: "auto",
       }}
     >
       <Navbar variant="info" />
+      <style>{`
+        .info-main {
+          padding-top: 140px;
+          flex: 1;
+        }
 
-      <main style={{ paddingTop: "140px" }}>
+        .about-section,
+        .contact-section {
+          max-width: 1720px;
+          margin: 0 auto;
+          padding: 48px;
+          box-sizing: border-box;
+        }
+
+        @media (max-width: 860px) {
+          .info-main {
+            padding-top: 110px;
+          }
+
+          .about-section,
+          .contact-section {
+            padding: 24px !important;
+          }
+
+          .about-section {
+            display: block !important;
+          }
+
+          .about-section > div {
+            width: 100% !important;
+          }
+
+          .about-section img {
+            width: 100% !important;
+            max-width: 320px !important;
+            height: auto !important;
+            margin: 0 auto !important;
+          }
+
+          .contact-section > div {
+            width: 100% !important;
+          }
+
+          .contact-section {
+            display: block !important;
+          }
+        }
+      `}</style>
+
+      <main className="info-main" style={{ paddingTop: "140px", flex: 1 }}>
         <section
           id="about"
+          className="about-section"
           style={{
             display: "grid",
             gridTemplateColumns: "minmax(0, 1.35fr) minmax(0, 1fr)",
@@ -208,7 +257,7 @@ export default function Info() {
             }}
           >
             <img
-              src="/images/Harmony.webp"
+              src="/images/harmony.webp"
               alt="Harmony Harrington"
               style={{
                 width: "240px",
@@ -222,119 +271,8 @@ export default function Info() {
         </section>
 
         <section
-          id="services"
-          style={{
-            maxWidth: "1720px",
-            margin: "0 auto",
-            padding: "0 48px 40px",
-            boxSizing: "border-box",
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: "'Times New Roman', serif",
-              fontSize: "clamp(28px, 3vw, 40px)",
-              fontWeight: 400,
-              margin: "0 0 32px 0",
-            }}
-          >
-            Paquetes de boda
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: "24px",
-            }}
-          >
-            {servicePackages.map((service) => (
-              <article
-                key={service.title}
-                style={{
-                  background: "rgba(0, 0, 0, 0.03)",
-                  borderRadius: "24px",
-                  padding: "28px",
-                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.05)",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  const target = e.currentTarget as HTMLElement;
-                  target.style.transform = "translateY(-6px)";
-                  target.style.boxShadow = "0 28px 60px rgba(0, 0, 0, 0.12)";
-                  target.style.background = "rgba(255, 255, 255, 0.98)";
-                }}
-                onMouseLeave={(e) => {
-                  const target = e.currentTarget as HTMLElement;
-                  target.style.transform = "translateY(0)";
-                  target.style.boxShadow = "0 20px 40px rgba(0, 0, 0, 0.05)";
-                  target.style.background = "rgba(0, 0, 0, 0.03)";
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    gap: "16px",
-                    marginBottom: "22px",
-                  }}
-                >
-                  <div>
-                    <h3
-                      style={{
-                        fontFamily: "'Times New Roman', serif",
-                        fontSize: "22px",
-                        fontWeight: 400,
-                        margin: 0,
-                      }}
-                    >
-                      {service.title}
-                    </h3>
-                    <p
-                      style={{
-                        margin: "8px 0 0 0",
-                        fontFamily: "system-ui, -apple-system, sans-serif",
-                        fontSize: "14px",
-                        color: "#555",
-                      }}
-                    >
-                      {service.duration}
-                    </p>
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: "system-ui, -apple-system, sans-serif",
-                      fontSize: "18px",
-                      fontWeight: 700,
-                      color: "#000",
-                    }}
-                  >
-                    {service.price}
-                  </div>
-                </div>
-
-                <ul style={{ margin: 0, paddingLeft: "0", color: "#222", textAlign: "center", listStylePosition: "inside" }}>
-                  {service.features.map((feature) => (
-                    <li
-                      key={feature}
-                      style={{
-                        marginBottom: "10px",
-                        fontSize: "15px",
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section
           id="contact"
+          className="contact-section"
           style={{
             maxWidth: "1720px",
             margin: "0 auto",
@@ -384,7 +322,7 @@ export default function Info() {
                   margin: "0 0 24px 0",
                 }}
               >
-                Cuéntame sobre tu boda y estaré encantada de ayudarte a crear recuerdos inolvidables.
+                Cada momento especial merece ser guardado. ¿Qué te gustaría capturar hoy? Diseñemos juntos una sesión de fotos que te haga sonreír cada vez que la mires. ¡Hablemos! 🤍
               </p>
             </div>
 
@@ -504,8 +442,8 @@ export default function Info() {
 
       <footer
         style={{
-          maxWidth: "1720px",
-          margin: "0 auto",
+          width: "100%",
+          marginTop: "auto",
           padding: "40px 48px 60px",
           boxSizing: "border-box",
           borderTop: "1px solid rgba(0,0,0,0.08)",
@@ -513,14 +451,6 @@ export default function Info() {
           textAlign: "center",
         }}
       >
-        <div style={{ marginBottom: "16px", fontSize: "15px", color: "#000" }}>
-          <a
-            href={getFooterHref(cfg.contactEntries.find((e) => e.label === "Email") ?? { label: "Email", value: "", href: "" })}
-            style={{ color: "#000", textDecoration: "none" }}
-          >
-           {cfg.contactEntries.find((e) => e.label === "Email")?.value ?? ""}
-          </a>
-        </div>
         <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "24px", fontSize: "15px", color: "#000" }}>
           <a
             href={getFooterHref(cfg.contactEntries.find((e) => e.label === "Instagram") ?? { label: "Instagram", value: "", href: "" })}

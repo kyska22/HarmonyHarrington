@@ -53,7 +53,7 @@ export const navigationConfig: NavigationConfig = {
 
 export const infoPageConfig: InfoPageConfig = {
   backLinkLabel: "Volver",
-  eyebrow: "Fotógrafa Independiente — Madrid, España",
+  eyebrow: "Fotógrafa independiente — Granada, España",
   title: "El arte es mi motor desde que era joven.",
   paragraphs: [
     "Hola! Soy Harmony Harrington.",
@@ -68,8 +68,8 @@ export const infoPageConfig: InfoPageConfig = {
     },
     {
       label: "Instagram",
-      value: "@photographer_hash",
-      href: "https://instagram.com/photographer_hash",
+      value: "@hash_photographer",
+      href: "https://instagram.com/hash_photographer",
     },
     {
       label: "Teléfono",
@@ -78,7 +78,7 @@ export const infoPageConfig: InfoPageConfig = {
     },
     {
       label: "Estudio",
-      value: "Calle de Fernando el Santo 18\n28010 Madrid, España",
+      value: "Granada, España",
     },
     {
       label: "Encargos",
@@ -114,21 +114,21 @@ export const galleryConfig: GalleryConfig = {
       description: "Retrato canino lleno de ternura donde el perro se asoma con mirada curiosa.",
     },
     {
-      src: "/images/paisaje_01.webp",
-      category: "Paisaje",
-      title: "Nieblas Alpinas — No. 03",
-      description: "Un paisaje brumoso donde montañas y nubes se funden en tonos fríos al amanecer.",
+      src: "/images/ballet_03.webp",
+      category: "Danza",
+      title: "Ballet — No. 03",
+      description: "Las chicas presentan sus trajes de danza en un entorno elegante.",
     },
     {
-      src: "/images/templo_01.webp",
-      category: "Arquitectura",
-      title: "Forma Pura — No. 04",
-      description: "Arquitectura serena con líneas geométricas que elevan la calma del espacio.",
+      src: "/images/familia1_01.webp",
+      category: "Familia",
+      title: "Familia España — No. 04",
+      description: "El amor de la familia capturado en un retrato cálido y lleno de vida en Costa Rica.",
     },
     {
-      src: "/images/modelo_01.webp",
-      category: "Bodegón",
-      title: "Tropicales — No. 05",
+      src: "/images/familia1_02.webp",
+      category: "Familia",
+      title: "Familia España — No. 05",
       description: "Retrato editorial con una atmósfera de frutas y texturas naturales.",
     },
     {
@@ -143,18 +143,7 @@ export const galleryConfig: GalleryConfig = {
       title: "Seda en Movimiento — No. 07",
       description: "Sesión de moda con movimiento y colores saturados en contraste.",
     },
-    {
-      src: "/images/familia2_01.webp",
-      category: "Paisaje",
-      title: "Acantilados — No. 08",
-      description: "Escena familiar al aire libre con una naturaleza que abraza a los protagonistas.",
-    },
-    {
-      src: "/images/familia2_02.webp",
-      category: "Calle",
-      title: "Neón Tokio — No. 09",
-      description: "Foto urbana de noche donde los neones y la lluvia resaltan la ciudad.",
-    },
+
     {
       src: "/images/modelos_01.webp",
       category: "Naturaleza",
@@ -174,12 +163,6 @@ export const galleryConfig: GalleryConfig = {
       description: "La elegancia del arabesco capturada entre sombras y materiales claros.",
     },
     {
-      src: "/images/familia2_03.webp",
-      category: "Paisaje",
-      title: "Dunas Infinitas — No. 13",
-      description: "Dunas infinitas recortadas por la luz dorada del atardecer.",
-    },
-    {
       src: "/images/modelo_04.webp",
       category: "Retrato",
       title: "Risas de Verano — No. 14",
@@ -190,12 +173,6 @@ export const galleryConfig: GalleryConfig = {
       category: "Calle",
       title: "Especias — No. 15",
       description: "Mercado callejero lleno de texturas, aromas y colores vivos.",
-    },
-    {
-      src: "/images/familia2_05.webp",
-      category: "Paisaje",
-      title: "Puente de Otoño — No. 16",
-      description: "Un paisaje otoñal donde la niebla y el puente crean una atmósfera tranquila.",
     },
     {
       src: "/images/familia2_06.webp",
@@ -215,18 +192,7 @@ export const galleryConfig: GalleryConfig = {
       title: "Tinta y Piel — No. 19",
       description: "Retrato intenso de un hombre con tatuajes y mirada profunda.",
     },
-    {
-      src: "/images/familia2_07.webp",
-      category: "Paisaje",
-      title: "Aurora — No. 20",
-      description: "La aurora boreal se refleja en un lago helado, creando una noche mágica.",
-    },
-    {
-      src: "/images/familia2_08.webp",
-      category: "Bodegón",
-      title: "Mesa Italiana — No. 21",
-      description: "Mesa italiana con alimentos frescos y una sensación de hogar compartido.",
-    },
+
     {
       src: "/images/templo_04.webp",
       category: "Arquitectura",
@@ -240,22 +206,10 @@ export const galleryConfig: GalleryConfig = {
       description: "Calle de La Habana con fachadas desgastadas y una paleta cálida.",
     },
     {
-      src: "/images/familia2_10.webp",
-      category: "Naturaleza",
-      title: "Libertad — No. 24",
-      description: "Corcel blanco galopando en una playa al amanecer, movimiento y libertad.",
-    },
-    {
       src: "/images/familia1_02.webp",
       category: "Moda",
       title: "Dorado — No. 25",
       description: "Tono dorado y glamour en un retrato beauty con detalles sofisticados.",
-    },
-    {
-      src: "/images/familia2_11.webp",
-      category: "Paisaje",
-      title: "Horizonte — No. 26",
-      description: "Horizonte oceánico donde el sol se funde con el mar en un brillo suave.",
     },
     {
       src: "/images/familia2_12.webp",
@@ -264,7 +218,7 @@ export const galleryConfig: GalleryConfig = {
       description: "Un artesano modela la arcilla con manos grabadas de experiencia.",
     },
     {
-      src: "/images/Harmony.webp",
+      src: "/images/harmony.webp",
       category: "Retrato",
       title: "Harmony — No. 28",
       description: "Retrato de Harmony Harrington, la fotógrafa detrás del lente, lleno de presencia y calma.",
