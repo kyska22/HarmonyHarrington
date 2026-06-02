@@ -199,7 +199,9 @@ export default function Info() {
           }
 
           .contact-section > div {
-            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 36px !important;
           }
 
           .contact-section {
