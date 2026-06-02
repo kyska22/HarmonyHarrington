@@ -14,7 +14,7 @@ export default function Home() {
   useSeo({
     title: `${siteConfig.brandName} - Galería de Fotografía Artística`,
     description: "Explora la galería de Harmony Harrington. Fotografía artística, bodas, retratos y más. Cada imagen cuenta una historia única.",
-    keywords: "fotografía, galería, arte, bodas, retratos, Madrid",
+    keywords: "fotografía, galería, arte, bodas, retratos, Granada, España",
     canonicalUrl: "https://harmonyharrington.com",
     ogImage: "/images/Harmony.webp",
   });

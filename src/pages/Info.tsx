@@ -51,7 +51,7 @@ export default function Info() {
   useSeo({
     title: "Sobre la Fotógrafa - Harmony Harrington",
     description: "Conoce a Harmony Harrington, fotógrafa profesional especializada en bodas, retratos y fotografía artística. Descubre mis paquetes de boda y contacta conmigo para tu evento especial.",
-    keywords: "fotografía de bodas, retratos profesionales, fotógrafa Madrid, paquetes de boda",
+    keywords: "fotografía de bodas, retratos profesionales, fotógrafa Granada, paquetes de boda",
     canonicalUrl: "https://harmony-harrington.vercel.app/",
     ogImage: "/images/Harmony.webp",
   });
@@ -153,7 +153,7 @@ export default function Info() {
         flexDirection: "column",
         minHeight: "100vh",
         width: "100vw",
-        background: "#ffffff",
+        background: "linear-gradient(135deg, #ffffff 0%, #e8f2fc 35%, #9ec5f8 70%, #4092f0 100%)",
         color: "#000000",
         overflowX: "hidden",
       }}

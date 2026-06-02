@@ -242,8 +242,8 @@ export const seoConfig = {
   siteName: "Harmony Harrington Photography",
   siteUrl: "https://harmony-harrington.vercel.app/",
   author: "Harmony Harrington",
-  description: "Fotógrafa profesional especializada en fotografía de bodas, retratos y arte en Madrid, España.",
-  keywords: "fotografía, bodas, retratos, fotógrafa profesional, Madrid, España",
+  description: "Fotógrafa profesional especializada en fotografía de bodas, retratos y arte en Granada, España.",
+  keywords: "fotografía, bodas, retratos, fotógrafa profesional, Granada, España",
   locale: "es_ES",
   twitter: "@photographer_hash",
 };
