@@ -76,6 +76,14 @@ export default function Info() {
     return xssPattern.test(normalized);
   };
 
+  const isValidPhone = (value: string): boolean => {
+    if (!value) return true; // Phone is optional
+    const normalized = value.trim();
+    // Allow only digits, +, -, (), spaces, and some international formats
+    const phonePattern = /^[\d+\-().\s]{7,}$/;
+    return phonePattern.test(normalized);
+  };
+
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -86,6 +94,24 @@ export default function Info() {
 
     if (!name || !message) {
       setFormError("Por favor completa tu nombre y tu mensaje antes de enviar.");
+      setFormSuccess(false);
+      return;
+    }
+
+    if (name.length < 2) {
+      setFormError("El nombre debe tener al menos 2 caracteres.");
+      setFormSuccess(false);
+      return;
+    }
+
+    if (message.length < 10) {
+      setFormError("El mensaje debe tener al menos 10 caracteres.");
+      setFormSuccess(false);
+      return;
+    }
+
+    if (phone && !isValidPhone(phone)) {
+      setFormError("El teléfono debe contener solo números, espacios, +, -, () y tener al menos 7 dígitos.");
       setFormSuccess(false);
       return;
     }
@@ -343,6 +369,8 @@ export default function Info() {
                   type="text"
                   required
                   placeholder="Nombre"
+                  minLength={2}
+                  maxLength={100}
                   style={{
                     width: "100%",
                     padding: "16px 18px",
@@ -360,6 +388,10 @@ export default function Info() {
                   name="phone"
                   type="tel"
                   placeholder="Teléfono"
+                  pattern="[\d+\-().\s]*"
+                  minLength={7}
+                  maxLength={20}
+                  title="El teléfono debe contener solo números, +, -, () y espacios"
                   style={{
                     width: "100%",
                     padding: "16px 18px",
@@ -378,6 +410,8 @@ export default function Info() {
                   required
                   placeholder="Escribe tu mensaje..."
                   rows={6}
+                  minLength={10}
+                  maxLength={1000}
                   style={{
                     width: "100%",
                     padding: "16px 18px",
