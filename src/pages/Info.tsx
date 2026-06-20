@@ -152,7 +152,7 @@ export default function Info() {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
-        width: "100vw",
+        width: "100%",
         background: "linear-gradient(135deg, #ffffff 0%, #e8f2fc 35%, #9ec5f8 70%, #4092f0 100%)",
         color: "#000000",
         overflowX: "hidden",
@@ -269,11 +269,23 @@ export default function Info() {
           .contact-section > div {
             display: flex !important;
             flex-direction: column !important;
+            align-items: stretch !important;
             gap: 36px !important;
           }
 
           .contact-section {
             display: block !important;
+          }
+
+          .contact-section form {
+            width: 100%;
+            min-width: 0;
+          }
+
+          .contact-section form label,
+          .contact-section form input,
+          .contact-section form textarea {
+            min-width: 0;
           }
 
           .info-footer {
