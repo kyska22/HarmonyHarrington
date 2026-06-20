@@ -26,3 +26,7 @@ dist-ssr
 # carpeta de imagenes backup
 images_bk/
 images_bk2/
+
+#imagenes 
+favicon_io.zip
+logoHASH.png

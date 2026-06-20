@@ -173,6 +173,74 @@ export default function Info() {
           box-sizing: border-box;
         }
 
+        .info-footer {
+          width: 100%;
+          margin-top: 44px;
+          padding: 0 clamp(24px, 4vw, 64px) 32px;
+          box-sizing: border-box;
+          font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .info-footer__inner {
+          max-width: 1624px;
+          margin: 0 auto;
+          padding: 30px clamp(22px, 3vw, 42px);
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          align-items: center;
+          gap: 28px;
+          border: 1px solid rgba(255, 255, 255, 0.52);
+          border-radius: 24px;
+          background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(225,240,255,0.46));
+          box-shadow: 0 22px 60px rgba(14, 69, 128, 0.12);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+        }
+
+        .info-footer__logo {
+          display: block;
+          width: auto;
+          height: 56px;
+          max-width: 240px;
+          object-fit: contain;
+        }
+
+        .info-footer__copyright {
+          color: rgba(16, 42, 74, 0.7);
+          font-size: 13px;
+          letter-spacing: 0.02em;
+          text-align: center;
+          white-space: nowrap;
+        }
+
+        .info-footer__socials {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .info-footer__social-link {
+          width: 42px;
+          height: 42px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: #102a4a;
+          background: rgba(255, 255, 255, 0.58);
+          border: 1px solid rgba(16, 42, 74, 0.12);
+          border-radius: 50%;
+          transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .info-footer__social-link:hover {
+          transform: translateY(-2px);
+          background: rgba(255, 255, 255, 0.92);
+          box-shadow: 0 8px 20px rgba(14, 69, 128, 0.13);
+        }
+
+        .info-footer__social-link svg { width: 19px; height: 19px; }
+
         @media (max-width: 860px) {
           .info-main {
             padding-top: 110px;
@@ -207,6 +275,21 @@ export default function Info() {
           .contact-section {
             display: block !important;
           }
+
+          .info-footer {
+            margin-top: 28px;
+            padding: 0 16px 20px;
+          }
+
+          .info-footer__inner {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            gap: 18px;
+            padding: 26px 20px;
+          }
+
+          .info-footer__logo { height: 44px; max-width: 210px; }
+          .info-footer__socials { justify-content: center; }
         }
       `}</style>
 
@@ -476,66 +559,45 @@ export default function Info() {
         </section>
       </main>
 
-      <footer
-        style={{
-          width: "100%",
-          marginTop: "auto",
-          padding: "40px 48px 60px",
-          boxSizing: "border-box",
-          borderTop: "1px solid rgba(0,0,0,0.08)",
-          fontFamily: "system-ui, -apple-system, sans-serif",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "24px", fontSize: "15px", color: "#000" }}>
+      <footer className="info-footer">
+        <div className="info-footer__inner">
+          <a href="/" aria-label="Harmony Harrington, inicio">
+            <img className="info-footer__logo" src="/assets/logo.png" alt="Harmony Harrington" />
+          </a>
+
+          <div className="info-footer__copyright">© 2026 Harmony Harrington</div>
+
+          <div className="info-footer__socials" aria-label="Redes sociales y contacto">
           <a
-            href={getFooterHref(cfg.contactEntries.find((e) => e.label === "Instagram") ?? { label: "Instagram", value: "", href: "" })}
+            href="https://instagram.com/hash_photographer"
             target="_blank"
-            rel="noreferrer"
-            style={{ color: "#000", textDecoration: "none" }}
+            rel="noopener noreferrer"
+            className="info-footer__social-link"
+            aria-label="Instagram de Harmony Harrington"
+            title="Instagram"
           >
-            {cfg.contactEntries.find((e) => e.label === "Instagram")?.value ?? ""}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
           </a>
           <a
-            href={getFooterHref(cfg.contactEntries.find((e) => e.label === "Teléfono") ?? { label: "Teléfono", value: "", href: "" })}
+            href="https://wa.me/34641155018"
             target="_blank"
-            rel="noreferrer"
-            style={{ color: "#000", textDecoration: "none" }}
+            rel="noopener noreferrer"
+            className="info-footer__social-link"
+            aria-label="Contactar por WhatsApp al +34 641 15 5018"
+            title="WhatsApp"
           >
-            {cfg.contactEntries.find((e) => e.label === "Teléfono")?.value ?? ""}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.45L3.5 20.5l1.45-4.28A8.5 8.5 0 1 1 20.5 11.6Z" />
+              <path d="M8.2 7.8c.3-.35.65-.35.9-.1l1.1 1.4c.2.25.2.55 0 .8l-.7.85c.7 1.45 1.85 2.55 3.3 3.2l.8-.75c.25-.2.55-.2.8-.05l1.5 1.05c.3.2.35.55.15.85-.55.85-1.45 1.3-2.4 1.15-3.05-.5-5.8-3.15-6.4-6.2-.2-.85.15-1.65.95-2.2Z" />
+            </svg>
           </a>
-        </div>
-        <div
-          style={{
-            marginTop: "18px",
-            paddingTop: "12px",
-            borderTop: "1px solid rgba(0,0,0,0.08)",
-            opacity: 0.55,
-            color: "rgba(0, 0, 0, 0.65)",
-            fontSize: "13px",
-          }}
-        >
-          © 2026 Harmony Harrington
+          </div>
         </div>
       </footer>
     </div>
   );
-}
-
-function getFooterHref(entry: { label: string; value: string; href?: string }) {
-  if (entry.label === "Email") {
-    return `mailto:${entry.value}`;
-  }
-
-  if (entry.label === "Teléfono") {
-    const phone = entry.value.replace(/[^0-9+]/g, "");
-    return `https://wa.me/${phone.replace(/^\+/, "")}`;
-  }
-
-  if (entry.label === "Estudio") {
-    const query = encodeURIComponent(entry.value.replace(/\n/g, " "));
-    return `https://www.google.com/maps/search/?api=1&query=${query}`;
-  }
-
-  return entry.href ?? "";
 }

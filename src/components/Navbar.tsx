@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { siteConfig, navigationConfig } from "@/config";
+import { navigationConfig, siteConfig } from "@/config";
 
 interface NavbarProps {
   variant?: "home" | "info";
@@ -8,259 +8,165 @@ interface NavbarProps {
 
 export default function Navbar({ variant = "home" }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const brandNameShort = siteConfig.brandName
-    ?.split(" ")
-    .slice(0, 2)
-    .join(" ");
+  const isInfo = variant === "info";
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const handleCloseMenu = () => setIsMenuOpen(false);
-  const toggleMenu = () => setIsMenuOpen((current) => !current);
-
-  if (variant === "info") {
-    return (
-      <nav
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          backgroundColor: "rgba(255, 255, 255, 0.85)",
-          backdropFilter: "blur(10px)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingLeft: "32px",
-          paddingRight: "32px",
-          boxSizing: "border-box",
-          zIndex: 50,
-          borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
-          minHeight: "60px",
-        }}
-      >
-        <style>{`
-          .navbar-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-          }
-
-          .navbar-link {
-            font-family: system-ui, -apple-system, sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            color: #000000;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-          }
-
-          .navbar-link:hover {
-            opacity: 0.6;
-          }
-
-          .navbar-toggle {
-            display: none;
-            background: none;
-            border: none;
-            padding: 8px;
-            cursor: pointer;
-            color: #000;
-          }
-
-          .navbar-toggle svg {
-            width: 24px;
-            height: 24px;
-          }
-
-          @media (max-width: 860px) {
-            .navbar-links {
-              position: absolute;
-              top: 60px;
-              left: 0;
-              right: 0;
-              margin: 0;
-              padding: 16px 0;
-              flex-direction: column;
-              align-items: stretch;
-              gap: 0;
-              background: rgba(255, 255, 255, 0.98);
-              border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-              max-height: 0;
-              overflow: hidden;
-              transition: max-height 0.25s ease;
-            }
-
-            .navbar-links.open {
-              max-height: 260px;
-            }
-
-            .navbar-link {
-              display: block;
-              width: 100%;
-              padding: 14px 32px;
-              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-              text-align: center;
-            }
-
-            .navbar-toggle {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            }
-          }
-        `}</style>
-
-        {/* Logo / Brand Name */}
-        {brandNameShort && (
-          <Link
-            to="/"
-            onClick={handleCloseMenu}
-            style={{
-              fontFamily: "'Times New Roman', serif",
-              fontSize: "16px",
-              fontWeight: 400,
-              color: "#000000",
-              letterSpacing: "0.05em",
-              cursor: "pointer",
-              textDecoration: "none",
-              transition: "opacity 0.3s ease",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-          >
-            {brandNameShort}
-          </Link>
-        )}
-
-        <button
-          type="button"
-          className="navbar-toggle"
-          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-          aria-expanded={isMenuOpen}
-          onClick={toggleMenu}
-        >
-          {isMenuOpen ? (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          ) : (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          )}
-        </button>
-
-        {/* Center Navigation Links */}
-        <div className={`navbar-links${isMenuOpen ? " open" : ""}`}>
-          <a
-            href="#about"
-            className="navbar-link"
-            onClick={handleCloseMenu}
-          >
-            Sobre mí
-          </a>
-
-          {/** Servicios removido mientras no haya sección disponible */}
-          {false && (
-            <a
-              href="#services"
-              className="navbar-link"
-              onClick={handleCloseMenu}
-            >
-              Servicios
-            </a>
-          )}
-
-          <a
-            href="#contact"
-            className="navbar-link"
-            onClick={handleCloseMenu}
-          >
-            Contáctanos
-          </a>
-        </div>
-
-        {/* Back Link */}
-        <Link
-          to="/"
-          onClick={handleCloseMenu}
-          style={{
-            fontFamily: "system-ui, -apple-system, sans-serif",
-            fontSize: "14px",
-            fontWeight: 400,
-            color: "#000000",
-            textDecoration: "none",
-            transition: "opacity 0.3s ease",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-        >
-          Volver
-        </Link>
-      </nav>
-    );
-  }
-
-  // Home variant (default)
   return (
-    <nav
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "60px",
-        backgroundColor: "rgba(255, 255, 255, 0.85)",
-        backdropFilter: "blur(10px)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        paddingLeft: "32px",
-        paddingRight: "32px",
-        boxSizing: "border-box",
-        zIndex: 50,
-        borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
-      }}
-    >
-      {/* Logo / Brand Name */}
-      {brandNameShort && (
-        <div
-          style={{
-            fontFamily: "'Times New Roman', serif",
-            fontSize: "16px",
-            fontWeight: 400,
-            color: "#000000",
-            letterSpacing: "0.05em",
-            cursor: "default",
-            transition: "opacity 0.3s ease",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-        >
-          {brandNameShort}
-        </div>
-      )}
+    <nav className={`site-navbar${isInfo ? " site-navbar--info" : ""}`} aria-label="Navegación principal">
+      <style>{`
+        .site-navbar {
+          position: fixed;
+          inset: 0 0 auto;
+          z-index: 50;
+          min-height: 72px;
+          padding: 7px clamp(20px, 3vw, 48px);
+          display: grid;
+          grid-template-columns: 1fr auto;
+          align-items: center;
+          background: rgba(255, 255, 255, 0.84);
+          border-bottom: 1px solid rgba(16, 42, 74, 0.1);
+          box-shadow: 0 8px 30px rgba(18, 69, 120, 0.05);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+        }
 
-      {/* Navigation Link */}
-      {navigationConfig.infoLinkLabel && (
-        <Link
-          to="/info"
-          style={{
-            fontFamily: "system-ui, -apple-system, sans-serif",
-            fontSize: "14px",
-            fontWeight: 400,
-            color: "#000000",
-            textDecoration: "none",
-            transition: "opacity 0.3s ease",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-        >
-          {navigationConfig.infoLinkLabel}
-        </Link>
+        .site-navbar--info {
+          grid-template-columns: 1fr auto 1fr;
+        }
+
+        .site-brand {
+          width: fit-content;
+          display: inline-flex;
+          align-items: center;
+          text-decoration: none;
+          transition: opacity 180ms ease, transform 180ms ease;
+        }
+
+        .site-brand:hover {
+          opacity: 0.78;
+          transform: translateY(-1px);
+        }
+
+        .site-brand__logo {
+          display: block;
+          width: auto;
+          height: 56px;
+          max-width: min(260px, 48vw);
+          object-fit: contain;
+        }
+
+        .site-navbar__links {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: clamp(22px, 3vw, 38px);
+        }
+
+        .site-navbar__link {
+          color: #102a4a;
+          font: 500 13px/1 system-ui, -apple-system, sans-serif;
+          letter-spacing: 0.035em;
+          text-decoration: none;
+          transition: opacity 180ms ease;
+        }
+
+        .site-navbar__link:hover { opacity: 0.58; }
+        .site-navbar__back { justify-self: end; }
+
+        .site-navbar__toggle {
+          display: none;
+          width: 40px;
+          height: 40px;
+          padding: 8px;
+          border: 0;
+          background: transparent;
+          color: #102a4a;
+          cursor: pointer;
+        }
+
+        .site-navbar__toggle svg { width: 24px; height: 24px; }
+
+        @media (max-width: 860px) {
+          .site-navbar,
+          .site-navbar--info {
+            min-height: 60px;
+            padding: 8px 18px;
+            grid-template-columns: 1fr auto auto;
+            gap: 8px;
+          }
+
+          .site-brand__logo {
+            height: 44px;
+            max-width: min(210px, 52vw);
+          }
+
+          .site-navbar__toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .site-navbar__links {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            display: grid;
+            gap: 0;
+            max-height: 0;
+            overflow: hidden;
+            background: rgba(248, 252, 255, 0.98);
+            border-bottom: 1px solid rgba(16, 42, 74, 0.1);
+            transition: max-height 220ms ease;
+          }
+
+          .site-navbar__links.open { max-height: 180px; }
+
+          .site-navbar__links .site-navbar__link {
+            padding: 16px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(16, 42, 74, 0.07);
+          }
+
+          .site-navbar__back { font-size: 12px; }
+        }
+      `}</style>
+
+      <Link to="/" className="site-brand" onClick={closeMenu} aria-label={`${siteConfig.brandName}, inicio`}>
+        <img className="site-brand__logo" src="/assets/logo.png" alt={siteConfig.brandName} />
+      </Link>
+
+      {isInfo ? (
+        <>
+          <button
+            type="button"
+            className="site-navbar__toggle"
+            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            {isMenuOpen ? (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M3 6h18M3 12h18M3 18h18" />
+              </svg>
+            )}
+          </button>
+
+          <div className={`site-navbar__links${isMenuOpen ? " open" : ""}`}>
+            <a href="#about" className="site-navbar__link" onClick={closeMenu}>Sobre mí</a>
+            <a href="#contact" className="site-navbar__link" onClick={closeMenu}>Contacto</a>
+          </div>
+
+          <Link to="/" className="site-navbar__link site-navbar__back" onClick={closeMenu}>Volver</Link>
+        </>
+      ) : (
+        navigationConfig.infoLinkLabel && (
+          <Link to="/info" className="site-navbar__link">{navigationConfig.infoLinkLabel}</Link>
+        )
       )}
     </nav>
   );
