@@ -95,7 +95,7 @@ export const overlayConfig: OverlayConfig = {
 };
 
 export const formspreeConfig = {
-  actionUrl: "https://formspree.io/f/xqejreqp",
+  actionUrl: "https://formspree.io/f/xreweapv",
   redirectPath: "/info#contact",
 };
 
