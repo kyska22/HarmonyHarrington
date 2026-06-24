@@ -213,6 +213,24 @@ export default function Info() {
           white-space: nowrap;
         }
 
+        .info-footer__attribution {
+          margin-top: 5px;
+          color: rgba(16, 42, 74, 0.58);
+          font-size: 10px;
+          letter-spacing: 0.015em;
+        }
+
+        .info-footer__attribution a {
+          color: inherit;
+          text-decoration: none;
+          border-bottom: 1px solid transparent;
+          transition: border-color 180ms ease;
+        }
+
+        .info-footer__attribution a:hover {
+          border-bottom-color: currentColor;
+        }
+
         .info-footer__socials {
           display: flex;
           justify-content: flex-end;
@@ -577,7 +595,19 @@ export default function Info() {
             <img className="info-footer__logo" src="/assets/logo.png" alt="Harmony Harrington" />
           </a>
 
-          <div className="info-footer__copyright">© 2026 Harmony Harrington</div>
+          <div className="info-footer__copyright">
+            © 2026 Harmony Harrington
+            <div className="info-footer__attribution">
+              Website designed and developed by {" "}
+              <a
+                href="https://kyska22.github.io/Portafolio1/portfolio.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Nataly Harrington
+              </a>
+            </div>
+          </div>
 
           <div className="info-footer__socials" aria-label="Redes sociales y contacto">
           <a
